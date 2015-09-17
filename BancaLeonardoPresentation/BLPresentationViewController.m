@@ -10,11 +10,21 @@
 #import "NGAParallaxMotion.h"
 
 // Variables declaration
-float parallaxIntensity;
+float parallaxIntensity = 50.0;
+float parallaxMaxValue = 200.0;
+float parallaxMinValue = 0;
 
 @interface BLPresentationViewController ()
 
+// Background Image View
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
+// Settings View
+@property (weak, nonatomic) IBOutlet UIView *settingsView;
+@property (weak, nonatomic) IBOutlet UIButton *showHideButton;
+@property (weak, nonatomic) IBOutlet UISlider *parallaxIntensitySlider;
+@property (weak, nonatomic) IBOutlet UILabel *parallaxIntensityValueLabel;
+
 
 @end
 
@@ -25,6 +35,8 @@ float parallaxIntensity;
     
     // Set the background image view
     [self  initializeBackgroundImage];
+    // Set the settings view
+    [self initializeSettings];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +58,29 @@ float parallaxIntensity;
     self.backgroundImageView.image = [UIImage imageNamed:@"Bicycle.png"];
     
 }
+
+
+#pragma mark - SETTINGS
+
+-(void)initializeSettings{
+
+    // Set background color
+    self.settingsView.backgroundColor = [UIColor lightGrayColor];
+    // Setting slider values
+    self.parallaxIntensitySlider.maximumValue = parallaxMaxValue;
+    self.parallaxIntensitySlider.minimumValue = parallaxMinValue;
+    self.parallaxIntensitySlider.value = parallaxIntensity;
+    self.parallaxIntensityValueLabel.text = [NSString stringWithFormat:@"%.00f", parallaxIntensity];
+}
+
+
+- (IBAction)parallaxIntensityChangedValue:(id)sender {
+    
+    parallaxIntensity = self.parallaxIntensitySlider.value;
+    self.parallaxIntensityValueLabel.text = [NSString stringWithFormat:@"%.00f", parallaxIntensity];
+    self.backgroundImageView.parallaxIntensity = parallaxIntensity;
+}
+
 
 /*
 #pragma mark - Navigation
