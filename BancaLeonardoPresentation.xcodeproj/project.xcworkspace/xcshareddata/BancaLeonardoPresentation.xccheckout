@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>17933BCD-73D0-48AB-A879-3D2577B7734A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>BancaLeonardoPresentation</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E6B5C06507C06F158C827A5A4556C995ABB4E426</key>
 		<string>https://github.com/ChrisMyrants/BancaLeonardoPresentation.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>BancaLeonardoPresentation.xcodeproj/project.xcworkspace</string>
+	<string>BancaLeonardoPresentation.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E6B5C06507C06F158C827A5A4556C995ABB4E426</key>
