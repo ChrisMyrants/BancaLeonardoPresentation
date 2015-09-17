@@ -14,6 +14,20 @@
 		D8B8D8E21BAAB3D2008BD0B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D8E11BAAB3D2008BD0B5 /* Images.xcassets */; };
 		D8B8D8E51BAAB3D2008BD0B5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D8E31BAAB3D2008BD0B5 /* LaunchScreen.xib */; };
 		D8B8D8F11BAAB3D2008BD0B5 /* BancaLeonardoPresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B8D8F01BAAB3D2008BD0B5 /* BancaLeonardoPresentationTests.m */; };
+		D8B8D9081BAABA7E008BD0B5 /* Bicycle.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D8FE1BAABA7E008BD0B5 /* Bicycle.png */; };
+		D8B8D9091BAABA7E008BD0B5 /* Binoculars.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D8FF1BAABA7E008BD0B5 /* Binoculars.png */; };
+		D8B8D90A1BAABA7E008BD0B5 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9001BAABA7E008BD0B5 /* Camera.png */; };
+		D8B8D90B1BAABA7E008BD0B5 /* Desk Tidy.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9011BAABA7E008BD0B5 /* Desk Tidy.png */; };
+		D8B8D90C1BAABA7E008BD0B5 /* Flightcase.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9021BAABA7E008BD0B5 /* Flightcase.png */; };
+		D8B8D90D1BAABA7E008BD0B5 /* Headphones.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9031BAABA7E008BD0B5 /* Headphones.png */; };
+		D8B8D90E1BAABA7E008BD0B5 /* Lightbulb.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9041BAABA7E008BD0B5 /* Lightbulb.png */; };
+		D8B8D90F1BAABA7E008BD0B5 /* Microscope.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9051BAABA7E008BD0B5 /* Microscope.png */; };
+		D8B8D9101BAABA7E008BD0B5 /* Stopwatch.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9061BAABA7E008BD0B5 /* Stopwatch.png */; };
+		D8B8D9111BAABA7E008BD0B5 /* Violin.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9071BAABA7E008BD0B5 /* Violin.png */; };
+		D8B8D9131BAABA8B008BD0B5 /* BL_Logo Gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9121BAABA8B008BD0B5 /* BL_Logo Gradient.png */; };
+		D8B8D9151BAABA98008BD0B5 /* BL_Logo Gradient Text.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8B8D9141BAABA98008BD0B5 /* BL_Logo Gradient Text.jpg */; };
+		D8B8D9181BAABAD7008BD0B5 /* BLPresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B8D9171BAABAD7008BD0B5 /* BLPresentationViewController.m */; };
+		D8B8D91E1BAABD97008BD0B5 /* NGAParallaxMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B8D91D1BAABD97008BD0B5 /* NGAParallaxMotion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +54,22 @@
 		D8B8D8EA1BAAB3D2008BD0B5 /* BancaLeonardoPresentationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BancaLeonardoPresentationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B8D8EF1BAAB3D2008BD0B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8B8D8F01BAAB3D2008BD0B5 /* BancaLeonardoPresentationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BancaLeonardoPresentationTests.m; sourceTree = "<group>"; };
+		D8B8D8FE1BAABA7E008BD0B5 /* Bicycle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bicycle.png; sourceTree = "<group>"; };
+		D8B8D8FF1BAABA7E008BD0B5 /* Binoculars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Binoculars.png; sourceTree = "<group>"; };
+		D8B8D9001BAABA7E008BD0B5 /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
+		D8B8D9011BAABA7E008BD0B5 /* Desk Tidy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Desk Tidy.png"; sourceTree = "<group>"; };
+		D8B8D9021BAABA7E008BD0B5 /* Flightcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flightcase.png; sourceTree = "<group>"; };
+		D8B8D9031BAABA7E008BD0B5 /* Headphones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Headphones.png; sourceTree = "<group>"; };
+		D8B8D9041BAABA7E008BD0B5 /* Lightbulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lightbulb.png; sourceTree = "<group>"; };
+		D8B8D9051BAABA7E008BD0B5 /* Microscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Microscope.png; sourceTree = "<group>"; };
+		D8B8D9061BAABA7E008BD0B5 /* Stopwatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stopwatch.png; sourceTree = "<group>"; };
+		D8B8D9071BAABA7E008BD0B5 /* Violin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Violin.png; sourceTree = "<group>"; };
+		D8B8D9121BAABA8B008BD0B5 /* BL_Logo Gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BL_Logo Gradient.png"; sourceTree = "<group>"; };
+		D8B8D9141BAABA98008BD0B5 /* BL_Logo Gradient Text.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "BL_Logo Gradient Text.jpg"; sourceTree = "<group>"; };
+		D8B8D9161BAABAD7008BD0B5 /* BLPresentationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPresentationViewController.h; sourceTree = "<group>"; };
+		D8B8D9171BAABAD7008BD0B5 /* BLPresentationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLPresentationViewController.m; sourceTree = "<group>"; };
+		D8B8D91C1BAABD97008BD0B5 /* NGAParallaxMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NGAParallaxMotion.h; path = ../NGAParallaxMotion.h; sourceTree = "<group>"; };
+		D8B8D91D1BAABD97008BD0B5 /* NGAParallaxMotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NGAParallaxMotion.m; path = ../NGAParallaxMotion.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +111,15 @@
 		D8B8D8D31BAAB3D2008BD0B5 /* BancaLeonardoPresentation */ = {
 			isa = PBXGroup;
 			children = (
+				D8B8D91F1BAAC15F008BD0B5 /* Logic */,
+				D8B8D8FA1BAAB83D008BD0B5 /* Resources */,
 				D8B8D8D81BAAB3D2008BD0B5 /* AppDelegate.h */,
 				D8B8D8D91BAAB3D2008BD0B5 /* AppDelegate.m */,
 				D8B8D8DB1BAAB3D2008BD0B5 /* ViewController.h */,
 				D8B8D8DC1BAAB3D2008BD0B5 /* ViewController.m */,
 				D8B8D8DE1BAAB3D2008BD0B5 /* Main.storyboard */,
+				D8B8D91C1BAABD97008BD0B5 /* NGAParallaxMotion.h */,
+				D8B8D91D1BAABD97008BD0B5 /* NGAParallaxMotion.m */,
 				D8B8D8E11BAAB3D2008BD0B5 /* Images.xcassets */,
 				D8B8D8E31BAAB3D2008BD0B5 /* LaunchScreen.xib */,
 				D8B8D8D41BAAB3D2008BD0B5 /* Supporting Files */,
@@ -117,6 +151,58 @@
 				D8B8D8EF1BAAB3D2008BD0B5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8B8D8FA1BAAB83D008BD0B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8D8FD1BAAB857008BD0B5 /* Logos */,
+				D8B8D8FC1BAAB84E008BD0B5 /* Cell Images */,
+				D8B8D8FB1BAAB845008BD0B5 /* Backgrounds */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D8B8D8FB1BAAB845008BD0B5 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8D9141BAABA98008BD0B5 /* BL_Logo Gradient Text.jpg */,
+			);
+			name = Backgrounds;
+			sourceTree = "<group>";
+		};
+		D8B8D8FC1BAAB84E008BD0B5 /* Cell Images */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8D8FE1BAABA7E008BD0B5 /* Bicycle.png */,
+				D8B8D8FF1BAABA7E008BD0B5 /* Binoculars.png */,
+				D8B8D9001BAABA7E008BD0B5 /* Camera.png */,
+				D8B8D9011BAABA7E008BD0B5 /* Desk Tidy.png */,
+				D8B8D9021BAABA7E008BD0B5 /* Flightcase.png */,
+				D8B8D9031BAABA7E008BD0B5 /* Headphones.png */,
+				D8B8D9041BAABA7E008BD0B5 /* Lightbulb.png */,
+				D8B8D9051BAABA7E008BD0B5 /* Microscope.png */,
+				D8B8D9061BAABA7E008BD0B5 /* Stopwatch.png */,
+				D8B8D9071BAABA7E008BD0B5 /* Violin.png */,
+			);
+			name = "Cell Images";
+			sourceTree = "<group>";
+		};
+		D8B8D8FD1BAAB857008BD0B5 /* Logos */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8D9121BAABA8B008BD0B5 /* BL_Logo Gradient.png */,
+			);
+			name = Logos;
+			sourceTree = "<group>";
+		};
+		D8B8D91F1BAAC15F008BD0B5 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8D9161BAABAD7008BD0B5 /* BLPresentationViewController.h */,
+				D8B8D9171BAABAD7008BD0B5 /* BLPresentationViewController.m */,
+			);
+			name = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +285,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8B8D90D1BAABA7E008BD0B5 /* Headphones.png in Resources */,
 				D8B8D8E01BAAB3D2008BD0B5 /* Main.storyboard in Resources */,
+				D8B8D9081BAABA7E008BD0B5 /* Bicycle.png in Resources */,
+				D8B8D90B1BAABA7E008BD0B5 /* Desk Tidy.png in Resources */,
+				D8B8D90C1BAABA7E008BD0B5 /* Flightcase.png in Resources */,
 				D8B8D8E51BAAB3D2008BD0B5 /* LaunchScreen.xib in Resources */,
 				D8B8D8E21BAAB3D2008BD0B5 /* Images.xcassets in Resources */,
+				D8B8D90F1BAABA7E008BD0B5 /* Microscope.png in Resources */,
+				D8B8D90E1BAABA7E008BD0B5 /* Lightbulb.png in Resources */,
+				D8B8D9101BAABA7E008BD0B5 /* Stopwatch.png in Resources */,
+				D8B8D9151BAABA98008BD0B5 /* BL_Logo Gradient Text.jpg in Resources */,
+				D8B8D90A1BAABA7E008BD0B5 /* Camera.png in Resources */,
+				D8B8D9091BAABA7E008BD0B5 /* Binoculars.png in Resources */,
+				D8B8D9111BAABA7E008BD0B5 /* Violin.png in Resources */,
+				D8B8D9131BAABA8B008BD0B5 /* BL_Logo Gradient.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +317,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8B8D91E1BAABD97008BD0B5 /* NGAParallaxMotion.m in Sources */,
 				D8B8D8DD1BAAB3D2008BD0B5 /* ViewController.m in Sources */,
 				D8B8D8DA1BAAB3D2008BD0B5 /* AppDelegate.m in Sources */,
+				D8B8D9181BAABAD7008BD0B5 /* BLPresentationViewController.m in Sources */,
 				D8B8D8D71BAAB3D2008BD0B5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +518,7 @@
 				D8B8D8F61BAAB3D2008BD0B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8B8D8F71BAAB3D2008BD0B5 /* Build configuration list for PBXNativeTarget "BancaLeonardoPresentationTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +527,7 @@
 				D8B8D8F91BAAB3D2008BD0B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
