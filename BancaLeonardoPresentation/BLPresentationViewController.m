@@ -27,6 +27,9 @@ NSString *showString = @"Mostra";
 NSString *hideString = @"Nascondi";
 bool isHidden = NO;
 float scrollDimensions = 150.0;
+float spaceFromScrollToDescription = 37.0;
+float descriptionHeight = 0;
+int loreLipsumIndex = 0;
 
 
 
@@ -46,11 +49,16 @@ float scrollDimensions = 150.0;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UISlider *blurIntensitySlider;
 @property (weak, nonatomic) IBOutlet UILabel *blurIntensityValueLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *numParoleLabel;
+@property (weak, nonatomic) IBOutlet UISlider *numParoleSlider;
+@property float numParoleMaxValue;
+@property float numParoleMinValue;
+@property float numParoleIndex;
 
 // Table View
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *cellsContent;
+@property (strong, nonatomic) NSArray *loreLipsum;
 
 @end
 
@@ -61,6 +69,25 @@ float scrollDimensions = 150.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Fare in modo che l'altezza delle celle della table view si adattino al loro contenuto, in particolare alla quantità di testo presente nella descriprion label
+    self.tableView.estimatedRowHeight = 68.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    // Set the lore lipsum array for the cells
+    [self initializeLoreLipsumArray];
+    // Set the description settings based on lore lipsum array
+    [self initializeNumParole];
     // Set the background image view
     [self  initializeBackgroundImage];
     // Set the settings view
@@ -69,13 +96,9 @@ float scrollDimensions = 150.0;
     [self initializeCellsContentArray];
     // Add a clear background to the table view
     self.tableView.backgroundColor = [UIColor clearColor];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
     
+    [self.tableView reloadData];
 }
-
 
 
 #pragma mark - BACKGROUND
@@ -204,6 +227,11 @@ float scrollDimensions = 150.0;
     self.blurIntensitySlider.minimumValue = blurMinValue;
     self.blurIntensitySlider.value = blurIntensity;
     self.blurIntensityValueLabel.text = [NSString stringWithFormat:@"%.00f", blurIntensity];
+    // Setting num parole values
+    self.numParoleSlider.minimumValue = self.numParoleMinValue;
+    self.numParoleSlider.maximumValue = self.numParoleMaxValue;
+    self.numParoleSlider.value = self.numParoleIndex;
+    self.numParoleLabel.text = [NSString stringWithFormat:@"%.00f", self.numParoleIndex];
     // Setting show hide button
     [self.showHideButton setTitle:hideString forState:UIControlStateNormal];
     isHidden = NO;
@@ -237,6 +265,18 @@ float scrollDimensions = 150.0;
 }
 
 
+- (IBAction)numParoleChangedValue:(id)sender {
+    
+    self.numParoleIndex = self.numParoleSlider.value;
+    self.numParoleLabel.text = [NSString stringWithFormat:@"%.00f", self.numParoleIndex];
+    loreLipsumIndex = (int)roundf(self.numParoleIndex);
+    [self initializeLoreLipsumArray];
+    [self initializeCellsContentArray];
+    [self.tableView reloadData];
+}
+
+
+
 - (IBAction)showHideTapped:(id)sender {
     
     if (isHidden) {
@@ -259,6 +299,16 @@ float scrollDimensions = 150.0;
 
 #pragma mark - TABLE
 
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    BLPresentationTableViewCell *cellBL = (BLPresentationTableViewCell *)cell;
+    
+    // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+    descriptionHeight = [self heightToAddCaluclation:cellBL.descriptionLabel];
+}
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     // Numero di celle pari al numero di elementi presente in cellsContent
@@ -275,8 +325,9 @@ float scrollDimensions = 150.0;
 /*
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-#warning - Still to complete
-    return 0.0;
+    float totalCellHeight = scrollDimensions + spaceFromScrollToDescription + 8.0 + descriptionHeight;
+    
+    return totalCellHeight;
 }
 
 
@@ -296,10 +347,6 @@ float scrollDimensions = 150.0;
     // Impostazione dell'immagine
     UIImage *imageToShow = [UIImage imageNamed:[dict valueForKey:@"image_name"]];
     cell.presentationImageView.image = imageToShow;
-    // Impostazione dell'effetto blur all'immagine
-    /*
-     cell.presentationImageView.image = [self blurWithCoreImage:cell.presentationImageView.image];
-     */
     // Impostazione del titolo
     NSString *title = [dict valueForKey:@"title"];
     cell.titleLabel.text = title;
@@ -309,8 +356,27 @@ float scrollDimensions = 150.0;
     
     // Impostiamo lo sfondo della cella trasparente
     cell.backgroundColor = [UIColor clearColor];
+    
+    // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+    descriptionHeight = [self heightToAddCaluclation:cell.descriptionLabel];
 
     return cell;
+}
+
+
+-(void)initializeLoreLipsumArray{
+    self.loreLipsum = [[NSArray alloc] initWithObjects:
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis.",
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquam interdum augue et ultrices. Praesent molestie augue non enim fringilla.",
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eleifend ullamcorper egestas. Morbi nec ipsum cursus, elementum nunc vitae, molestie quam. Mauris sed leo felis. Praesent dignissim, lacus at mattis.",
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin ex id mollis commodo. In sit amet ullamcorper purus, sit amet bibendum justo. Sed sodales ante et ipsum viverra, sed tristique eros condimentum. Nulla a risus sed ante molestie vehicula.",
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget aliquet magna. Ut nec nulla bibendum orci mollis commodo ut non nibh. Donec fringilla ex augue, ac suscipit odio sagittis vitae. Cras ornare rutrum orci non ultrices. Sed mattis lectus a purus posuere elementum. Cras mauris lectus, malesuada quis ultrices.",
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus vitae diam mollis pulvinar. Duis aliquet lectus in sem vulputate, ut cursus diam condimentum. Nunc quis gravida tellus, venenatis aliquam nulla. Sed sit amet porttitor ante. Quisque vel eros lacinia, maximus arcu eu, placerat tortor. Nam iaculis, nisl sed scelerisque finibus, sapien lectus eleifend lorem, eget iaculis diam sapien et.",
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac auctor erat. Proin ut dui erat. Nam id felis eu sem ultricies gravida commodo non arcu. Ut eget risus in lorem dignissim dapibus vitae ut risus. Ut id tincidunt nulla. Vivamus sodales ligula eget nisl condimentum aliquam. Nulla ultricies leo ligula, vel pharetra dui facilisis at. Sed euismod felis fringilla arcu elementum dictum. Phasellus a finibus nulla. Fusce tincidunt vel.",
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia erat vel aliquam finibus. Phasellus massa augue, placerat et urna et, condimentum laoreet neque. Nam dapibus arcu suscipit, viverra dui cursus, porttitor ipsum. Curabitur mattis aliquet lacus, id facilisis lacus elementum sed. Quisque suscipit ultrices sapien sit amet accumsan. Vestibulum dictum laoreet lacinia. Fusce nulla odio, dignissim ut fermentum eu, facilisis non magna. Donec ut libero sed dolor dapibus tincidunt et nec quam. Duis non ultricies lorem. Quisque eu odio.",
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet ultrices orci at viverra. Donec ut orci eu neque lobortis feugiat eu eu nunc. Nulla sagittis orci ac suscipit fermentum. Nulla congue elit turpis, vitae lobortis ex tincidunt vitae. Vivamus sollicitudin facilisis ex efficitur varius. Fusce diam nisl, porta sit amet elit vitae, ornare malesuada erat. Nam porttitor magna in mollis convallis. Quisque consequat nisl quam, nec posuere enim vehicula sed. Suspendisse potenti. Quisque non ex molestie, luctus massa quis, suscipit nisl. Vivamus sed enim mattis, tristique lorem sit amet.",
+                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo lobortis ex, sit amet rutrum sem lacinia a. Vestibulum bibendum vel nulla sed ornare. Duis odio augue, ullamcorper nec venenatis vel, euismod sit amet neque. Aliquam porta viverra ipsum. Nam tempus malesuada ex in elementum. Sed et nulla tincidunt magna pellentesque suscipit a et ante. Aenean a auctor dui. In posuere semper urna at efficitur. Maecenas accumsan dictum velit et ultrices. Sed ullamcorper nunc ipsum, sed pharetra ex posuere ac. Duis vitae dapibus dolor, ut aliquet orci. Vestibulum at ipsum iaculis, dictum tellus ut, posuere lectus. Suspendisse blandit faucibus semper.",
+                       nil];
 }
 
 
@@ -320,23 +386,31 @@ float scrollDimensions = 150.0;
     self.cellsContent = [[NSMutableArray alloc] init];
     
     // First cell
-    NSDictionary *dict1 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 1", @"title", @"Description.......", @"description", @"Binoculars.png", @"image_name", nil];
+    NSDictionary *dict1 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 1", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Binoculars.png", @"image_name", nil];
     [self.cellsContent addObject:dict1];
     // First cell
-    NSDictionary *dict2 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 2", @"title", @"Description.......", @"description", @"Camera.png", @"image_name", nil];
+    NSDictionary *dict2 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 2", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Camera.png", @"image_name", nil];
     [self.cellsContent addObject:dict2];
     // First cell
-    NSDictionary *dict3 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 3", @"title", @"Description.......", @"description", @"Desk Tidy.png", @"image_name", nil];
+    NSDictionary *dict3 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 3", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Desk Tidy.png", @"image_name", nil];
     [self.cellsContent addObject:dict3];
     // First cell
-    NSDictionary *dict4 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 4", @"title", @"Description.......", @"description", @"Headphones.png", @"image_name", nil];
+    NSDictionary *dict4 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 4", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Headphones.png", @"image_name", nil];
     [self.cellsContent addObject:dict4];
     // First cell
-    NSDictionary *dict5 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 5", @"title", @"Description.......", @"description", @"Flightcase.png", @"image_name", nil];
+    NSDictionary *dict5 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 5", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Flightcase.png", @"image_name", nil];
     [self.cellsContent addObject:dict5];
     // First cell
-    NSDictionary *dict6 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 6", @"title", @"Description.......", @"description", @"Microscope.png", @"image_name", nil];
+    NSDictionary *dict6 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 6", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Microscope.png", @"image_name", nil];
     [self.cellsContent addObject:dict6];
+}
+
+
+-(void)initializeNumParole{
+
+    self.numParoleMinValue = 0;
+    self.numParoleMaxValue = [self.loreLipsum count] - 1.0;
+    self.numParoleIndex = 0;
 }
 
 
@@ -387,6 +461,17 @@ float scrollDimensions = 150.0;
     float scrollContentHeightDifference = scrollView.bounds.size.height - scrollView.contentSize.height;
     
     return scrollContentHeightDifference * percentage;
+}
+
+
+-(float)heightToAddCaluclation:(UILabel *)aLabel{
+    
+    CGRect rect = [aLabel.text boundingRectWithSize:CGSizeMake(aLabel.frame.size.width, MAXFLOAT)
+                                            options:NSStringDrawingUsesLineFragmentOrigin
+                                         attributes:@{NSFontAttributeName : aLabel.font}
+                                            context:nil];
+    float finalHeight = ceil(rect.size.height / aLabel.font.lineHeight) * 30.0;
+    return finalHeight;
 }
 
 
