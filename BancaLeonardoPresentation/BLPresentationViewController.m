@@ -26,10 +26,12 @@ float backgroundAlpha = 0.2;
 NSString *showString = @"Mostra";
 NSString *hideString = @"Nascondi";
 bool isHidden = NO;
-float scrollDimensions = 150.0;
+float scrollDimensions = 200.0;
 float spaceFromScrollToDescription = 37.0;
 float descriptionHeight = 0;
 int loreLipsumIndex = 0;
+float headerMaxHeight = 150.0;
+float headerMinimumHeight = 50.0;
 
 
 
@@ -39,6 +41,11 @@ int loreLipsumIndex = 0;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (strong, nonatomic) NSArray *imagesArray;
 @property (strong, nonatomic) UIImage *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
+
+// Header View
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeightConstraint;
 
 // Settings View
 @property (weak, nonatomic) IBOutlet UIView *settingsView;
@@ -101,6 +108,14 @@ int loreLipsumIndex = 0;
 }
 
 
+// Metodo da richiamare per impostare la status bar con lo style light per ottenere le scritte della status bar in bianco
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    
+    return UIStatusBarStyleLightContent;
+}
+
+
+
 #pragma mark - BACKGROUND
 
 -(void)initializeBackgroundImage{
@@ -118,6 +133,11 @@ int loreLipsumIndex = 0;
     self.backgroundImageView.image = [self blurWithCoreImage:self.backgroundImageView.image];
     // Set alpha with backgroundAlpha
     self.backgroundImageView.alpha = backgroundAlpha;
+    // Set Banca Leonardo blue for background
+    self.backgroundView.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:20.0f/255.0f blue:137.0f/255.0f alpha:1.0f];
+    
+    // Set header background color
+    self.headerView.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:20.0f/255.0f blue:137.0f/255.0f alpha:1.0f];
 }
 
 
@@ -207,7 +227,6 @@ int loreLipsumIndex = 0;
     
     return outputImage;
 }
-
 
 
 
@@ -322,21 +341,6 @@ int loreLipsumIndex = 0;
     return 1;
 }
 
-/*
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    float totalCellHeight = scrollDimensions + spaceFromScrollToDescription + 8.0 + descriptionHeight;
-    
-    return totalCellHeight;
-}
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-
-#warning - Still to complete
-    return 0.0;
-}
-*/
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -421,6 +425,15 @@ int loreLipsumIndex = 0;
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     [self updateVisibleCellsWithMotion];
+
+    if (scrollView.contentOffset.y >= 0) {
+        if (scrollView.contentOffset.y <= headerMaxHeight - headerMinimumHeight) {
+            self.headerHeightConstraint.constant = headerMaxHeight - scrollView.contentOffset.y;
+        }
+    }
+    else{
+        self.headerHeightConstraint.constant = headerMaxHeight;
+    }
 }
 
 
@@ -470,7 +483,7 @@ int loreLipsumIndex = 0;
                                             options:NSStringDrawingUsesLineFragmentOrigin
                                          attributes:@{NSFontAttributeName : aLabel.font}
                                             context:nil];
-    float finalHeight = ceil(rect.size.height / aLabel.font.lineHeight) * 30.0;
+    float finalHeight = ceil(rect.size.height / aLabel.font.lineHeight) * 21.0;
     return finalHeight;
 }
 

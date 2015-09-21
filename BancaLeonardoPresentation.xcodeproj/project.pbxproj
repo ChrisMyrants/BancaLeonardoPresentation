@@ -18,6 +18,14 @@
 		D8196DF81BAB0EFB001FE6DB /* Microscope.png in Resources */ = {isa = PBXBuildFile; fileRef = D8196DEE1BAB0EFB001FE6DB /* Microscope.png */; };
 		D8196DF91BAB0EFB001FE6DB /* Stopwatch.png in Resources */ = {isa = PBXBuildFile; fileRef = D8196DEF1BAB0EFB001FE6DB /* Stopwatch.png */; };
 		D8196DFA1BAB0EFB001FE6DB /* Violin.png in Resources */ = {isa = PBXBuildFile; fileRef = D8196DF01BAB0EFB001FE6DB /* Violin.png */; };
+		D876B8D31BB004A500BF19E9 /* MuseoSansCyrl_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */; };
+		D876B8D41BB004A500BF19E9 /* MuseoSansCyrl_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */; };
+		D876B8D51BB004A500BF19E9 /* MuseoSansCyrl-700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D21BB004A500BF19E9 /* MuseoSansCyrl-700.ttf */; };
+		D876B8D61BB004A500BF19E9 /* MuseoSansCyrl-700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D21BB004A500BF19E9 /* MuseoSansCyrl-700.ttf */; };
+		D876B8D81BB02C8C00BF19E9 /* Logo_bianco.png in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D71BB02C8C00BF19E9 /* Logo_bianco.png */; };
+		D876B8D91BB02C8C00BF19E9 /* Logo_bianco.png in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D71BB02C8C00BF19E9 /* Logo_bianco.png */; };
+		D876B8DE1BB03DA700BF19E9 /* Banca Leonardo_bianco.png in Resources */ = {isa = PBXBuildFile; fileRef = D876B8DD1BB03DA700BF19E9 /* Banca Leonardo_bianco.png */; };
+		D876B8DF1BB03DA700BF19E9 /* Banca Leonardo_bianco.png in Resources */ = {isa = PBXBuildFile; fileRef = D876B8DD1BB03DA700BF19E9 /* Banca Leonardo_bianco.png */; };
 		D8B8D8D71BAAB3D2008BD0B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B8D8D61BAAB3D2008BD0B5 /* main.m */; };
 		D8B8D8DA1BAAB3D2008BD0B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B8D8D91BAAB3D2008BD0B5 /* AppDelegate.m */; };
 		D8B8D8DD1BAAB3D2008BD0B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B8D8DC1BAAB3D2008BD0B5 /* ViewController.m */; };
@@ -54,6 +62,10 @@
 		D8196DEE1BAB0EFB001FE6DB /* Microscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Microscope.png; sourceTree = "<group>"; };
 		D8196DEF1BAB0EFB001FE6DB /* Stopwatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stopwatch.png; sourceTree = "<group>"; };
 		D8196DF01BAB0EFB001FE6DB /* Violin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Violin.png; sourceTree = "<group>"; };
+		D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSansCyrl_0.otf; sourceTree = "<group>"; };
+		D876B8D21BB004A500BF19E9 /* MuseoSansCyrl-700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuseoSansCyrl-700.ttf"; sourceTree = "<group>"; };
+		D876B8D71BB02C8C00BF19E9 /* Logo_bianco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_bianco.png; sourceTree = "<group>"; };
+		D876B8DD1BB03DA700BF19E9 /* Banca Leonardo_bianco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Banca Leonardo_bianco.png"; sourceTree = "<group>"; };
 		D8B8D8D11BAAB3D2008BD0B5 /* BancaLeonardoPresentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BancaLeonardoPresentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B8D8D51BAAB3D2008BD0B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8B8D8D61BAAB3D2008BD0B5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D876B8D01BB0048200BF19E9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */,
+				D876B8D21BB004A500BF19E9 /* MuseoSansCyrl-700.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		D8B8D8C81BAAB3D2008BD0B5 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +180,7 @@
 		D8B8D8FA1BAAB83D008BD0B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D876B8D01BB0048200BF19E9 /* Fonts */,
 				D8B8D8FD1BAAB857008BD0B5 /* Logos */,
 				D8B8D8FC1BAAB84E008BD0B5 /* Cell Images */,
 				D8B8D8FB1BAAB845008BD0B5 /* Backgrounds */,
@@ -194,6 +216,8 @@
 		D8B8D8FD1BAAB857008BD0B5 /* Logos */ = {
 			isa = PBXGroup;
 			children = (
+				D876B8D71BB02C8C00BF19E9 /* Logo_bianco.png */,
+				D876B8DD1BB03DA700BF19E9 /* Banca Leonardo_bianco.png */,
 				D8B8D9121BAABA8B008BD0B5 /* BL_Logo Gradient.png */,
 			);
 			name = Logos;
@@ -290,7 +314,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D876B8D81BB02C8C00BF19E9 /* Logo_bianco.png in Resources */,
 				D8196DF81BAB0EFB001FE6DB /* Microscope.png in Resources */,
+				D876B8D31BB004A500BF19E9 /* MuseoSansCyrl_0.otf in Resources */,
 				D8B8D8E01BAAB3D2008BD0B5 /* Main.storyboard in Resources */,
 				D8196DF21BAB0EFB001FE6DB /* Binoculars.png in Resources */,
 				D8196DF61BAB0EFB001FE6DB /* Headphones.png in Resources */,
@@ -302,9 +328,11 @@
 				D8196DF51BAB0EFB001FE6DB /* Flightcase.png in Resources */,
 				D8B8D9151BAABA98008BD0B5 /* BL_Logo Gradient Text.jpg in Resources */,
 				D8196DF31BAB0EFB001FE6DB /* Camera.png in Resources */,
+				D876B8DE1BB03DA700BF19E9 /* Banca Leonardo_bianco.png in Resources */,
 				D8196DF71BAB0EFB001FE6DB /* Lightbulb.png in Resources */,
 				D8B8D9131BAABA8B008BD0B5 /* BL_Logo Gradient.png in Resources */,
 				D8196DF41BAB0EFB001FE6DB /* Desk Tidy.png in Resources */,
+				D876B8D51BB004A500BF19E9 /* MuseoSansCyrl-700.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +340,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D876B8DF1BB03DA700BF19E9 /* Banca Leonardo_bianco.png in Resources */,
+				D876B8D91BB02C8C00BF19E9 /* Logo_bianco.png in Resources */,
+				D876B8D41BB004A500BF19E9 /* MuseoSansCyrl_0.otf in Resources */,
+				D876B8D61BB004A500BF19E9 /* MuseoSansCyrl-700.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
