@@ -18,6 +18,7 @@
 		D8196DF81BAB0EFB001FE6DB /* Microscope.png in Resources */ = {isa = PBXBuildFile; fileRef = D8196DEE1BAB0EFB001FE6DB /* Microscope.png */; };
 		D8196DF91BAB0EFB001FE6DB /* Stopwatch.png in Resources */ = {isa = PBXBuildFile; fileRef = D8196DEF1BAB0EFB001FE6DB /* Stopwatch.png */; };
 		D8196DFA1BAB0EFB001FE6DB /* Violin.png in Resources */ = {isa = PBXBuildFile; fileRef = D8196DF01BAB0EFB001FE6DB /* Violin.png */; };
+		D84A2A0D1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D84A2A0C1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m */; };
 		D876B8D31BB004A500BF19E9 /* MuseoSansCyrl_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */; };
 		D876B8D41BB004A500BF19E9 /* MuseoSansCyrl_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */; };
 		D876B8D51BB004A500BF19E9 /* MuseoSansCyrl-700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D21BB004A500BF19E9 /* MuseoSansCyrl-700.ttf */; };
@@ -62,6 +63,8 @@
 		D8196DEE1BAB0EFB001FE6DB /* Microscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Microscope.png; sourceTree = "<group>"; };
 		D8196DEF1BAB0EFB001FE6DB /* Stopwatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stopwatch.png; sourceTree = "<group>"; };
 		D8196DF01BAB0EFB001FE6DB /* Violin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Violin.png; sourceTree = "<group>"; };
+		D84A2A0B1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPresentationOnlyTextTableViewCell.h; sourceTree = "<group>"; };
+		D84A2A0C1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLPresentationOnlyTextTableViewCell.m; sourceTree = "<group>"; };
 		D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSansCyrl_0.otf; sourceTree = "<group>"; };
 		D876B8D21BB004A500BF19E9 /* MuseoSansCyrl-700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuseoSansCyrl-700.ttf"; sourceTree = "<group>"; };
 		D876B8D71BB02C8C00BF19E9 /* Logo_bianco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_bianco.png; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				D8B8D9171BAABAD7008BD0B5 /* BLPresentationViewController.m */,
 				D8196DE41BAAF81B001FE6DB /* BLPresentationTableViewCell.h */,
 				D8196DE51BAAF81B001FE6DB /* BLPresentationTableViewCell.m */,
+				D84A2A0B1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.h */,
+				D84A2A0C1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				D8B8D8DA1BAAB3D2008BD0B5 /* AppDelegate.m in Sources */,
 				D8196DE61BAAF81B001FE6DB /* BLPresentationTableViewCell.m in Sources */,
 				D8B8D9181BAABAD7008BD0B5 /* BLPresentationViewController.m in Sources */,
+				D84A2A0D1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m in Sources */,
 				D8B8D8D71BAAB3D2008BD0B5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

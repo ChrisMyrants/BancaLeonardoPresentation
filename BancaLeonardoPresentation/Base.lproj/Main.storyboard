@@ -9,6 +9,7 @@
         <mutableArray key="MuseoSansCyrl_0.otf">
             <string>MuseoSansCyrl-300</string>
             <string>MuseoSansCyrl-300</string>
+            <string>MuseoSansCyrl-300</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -53,6 +54,30 @@
                                 <rect key="frame" x="0.0" y="600" width="600" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="onlyTextCellIdentifier" rowHeight="44" id="vSY-wG-06M" customClass="BLPresentationOnlyTextTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vSY-wG-06M" id="ZuH-9i-hty">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQT-eH-01M" userLabel="description_Label">
+                                                    <rect key="frame" x="279" y="12" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="MuseoSansCyrl-300" family="Museo Sans Cyrl" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eQT-eH-01M" firstAttribute="top" secondItem="ZuH-9i-hty" secondAttribute="top" constant="16" id="JiF-cy-KuG"/>
+                                                <constraint firstAttribute="trailing" secondItem="eQT-eH-01M" secondAttribute="trailing" constant="8" id="NQC-4e-nnw"/>
+                                                <constraint firstAttribute="bottom" secondItem="eQT-eH-01M" secondAttribute="bottom" constant="16" id="kDj-EK-hUy"/>
+                                                <constraint firstItem="eQT-eH-01M" firstAttribute="leading" secondItem="ZuH-9i-hty" secondAttribute="leading" constant="8" id="ubS-SE-jt7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="eQT-eH-01M" id="ceA-iQ-WMf"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="350" id="SLN-Ab-Ol8" customClass="BLPresentationTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>

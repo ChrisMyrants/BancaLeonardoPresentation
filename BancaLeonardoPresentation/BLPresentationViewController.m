@@ -10,6 +10,7 @@
 
 #import "BLPresentationViewController.h"
 #import "BLPresentationTableViewCell.h"
+#import "BLPresentationOnlyTextTableViewCell.h"
 #import "NGAParallaxMotion.h"
 
 
@@ -29,6 +30,7 @@ bool isHidden = NO;
 float scrollDimensions = 200.0;
 float spaceFromScrollToDescription = 37.0;
 float descriptionHeight = 0;
+float onlyDescriptionHeight = 0;
 int loreLipsumIndex = 0;
 float headerMaxHeight = 150.0;
 float headerMinimumHeight = 50.0;
@@ -321,10 +323,17 @@ float headerMinimumHeight = 50.0;
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    BLPresentationTableViewCell *cellBL = (BLPresentationTableViewCell *)cell;
-    
-    // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
-    descriptionHeight = [self heightToAddCaluclation:cellBL.descriptionLabel];
+    // Distinzione tra la prima cella, che contiene soltato testo, e le altre celle, che contengono anche lo scroller con l'immagine e il titolo
+    if (indexPath.row == 0) {
+        BLPresentationOnlyTextTableViewCell *cellBL = (BLPresentationOnlyTextTableViewCell *)cell;
+        // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+        onlyDescriptionHeight = [self heightToAddCaluclation:cellBL.descriptionLabel];
+    }
+    else{
+        BLPresentationTableViewCell *cellBL = (BLPresentationTableViewCell *)cell;
+        // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+        descriptionHeight = [self heightToAddCaluclation:cellBL.descriptionLabel];
+    }
 }
 
 
@@ -344,42 +353,59 @@ float headerMinimumHeight = 50.0;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    // Inizializzare la cella da restituire passando l'identificatore assegnato alla cella della table nella Storyboard
-    BLPresentationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     // Recuperare le informazioni corrispondenti all'indice della cella
     NSDictionary *dict = [self.cellsContent objectAtIndex:indexPath.row];
-    // Impostazione dell'immagine
-    UIImage *imageToShow = [UIImage imageNamed:[dict valueForKey:@"image_name"]];
-    cell.presentationImageView.image = imageToShow;
-    // Impostazione del titolo
-    NSString *title = [dict valueForKey:@"title"];
-    cell.titleLabel.text = title;
-    // Impostazione della descrizione
-    NSString *description = [dict valueForKey:@"description"];
-    cell.descriptionLabel.text = description;
-    
-    // Impostiamo lo sfondo della cella trasparente
-    cell.backgroundColor = [UIColor clearColor];
-    
-    // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
-    descriptionHeight = [self heightToAddCaluclation:cell.descriptionLabel];
-
-    return cell;
+    // Inizializzare la cella da restituire passando l'identificatore assegnato alla cella della table nella Storyboard. Se la cella è la prima, allora inizializzo la BLPresentationOnlyTextTableViewCell, altrimenti la normale BLPresentationTableViewCell con scoller e immagine
+    if (indexPath.row == 0) {
+        
+        BLPresentationOnlyTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"onlyTextCellIdentifier" forIndexPath:indexPath];
+        // Impostazione della descrizione
+        NSString *description = [dict valueForKey:@"description"];
+        cell.descriptionLabel.text = description;
+        // Impostiamo lo sfondo della cella trasparente
+        cell.backgroundColor = [UIColor clearColor];
+        // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+        onlyDescriptionHeight = [self heightToAddCaluclation:cell.descriptionLabel];
+        
+        return cell;
+    }
+    else{
+        BLPresentationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
+        // Impostazione dell'immagine
+        UIImage *imageToShow = [UIImage imageNamed:[dict valueForKey:@"image_name"]];
+        cell.presentationImageView.image = imageToShow;
+        // Impostazione del titolo
+        NSString *title = [dict valueForKey:@"title"];
+        cell.titleLabel.text = title;
+        // Impostazione della descrizione
+        NSString *description = [dict valueForKey:@"description"];
+        cell.descriptionLabel.text = description;
+        // Impostiamo lo sfondo della cella trasparente
+        cell.backgroundColor = [UIColor clearColor];
+        // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+        descriptionHeight = [self heightToAddCaluclation:cell.descriptionLabel];
+        
+        return cell;
+    }
 }
 
 
 -(void)initializeLoreLipsumArray{
     self.loreLipsum = [[NSArray alloc] initWithObjects:
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis.",
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquam interdum augue et ultrices. Praesent molestie augue non enim fringilla.",
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eleifend ullamcorper egestas. Morbi nec ipsum cursus, elementum nunc vitae, molestie quam. Mauris sed leo felis. Praesent dignissim, lacus at mattis.",
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin ex id mollis commodo. In sit amet ullamcorper purus, sit amet bibendum justo. Sed sodales ante et ipsum viverra, sed tristique eros condimentum. Nulla a risus sed ante molestie vehicula.",
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget aliquet magna. Ut nec nulla bibendum orci mollis commodo ut non nibh. Donec fringilla ex augue, ac suscipit odio sagittis vitae. Cras ornare rutrum orci non ultrices. Sed mattis lectus a purus posuere elementum. Cras mauris lectus, malesuada quis ultrices.",
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus vitae diam mollis pulvinar. Duis aliquet lectus in sem vulputate, ut cursus diam condimentum. Nunc quis gravida tellus, venenatis aliquam nulla. Sed sit amet porttitor ante. Quisque vel eros lacinia, maximus arcu eu, placerat tortor. Nam iaculis, nisl sed scelerisque finibus, sapien lectus eleifend lorem, eget iaculis diam sapien et.",
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac auctor erat. Proin ut dui erat. Nam id felis eu sem ultricies gravida commodo non arcu. Ut eget risus in lorem dignissim dapibus vitae ut risus. Ut id tincidunt nulla. Vivamus sodales ligula eget nisl condimentum aliquam. Nulla ultricies leo ligula, vel pharetra dui facilisis at. Sed euismod felis fringilla arcu elementum dictum. Phasellus a finibus nulla. Fusce tincidunt vel.",
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia erat vel aliquam finibus. Phasellus massa augue, placerat et urna et, condimentum laoreet neque. Nam dapibus arcu suscipit, viverra dui cursus, porttitor ipsum. Curabitur mattis aliquet lacus, id facilisis lacus elementum sed. Quisque suscipit ultrices sapien sit amet accumsan. Vestibulum dictum laoreet lacinia. Fusce nulla odio, dignissim ut fermentum eu, facilisis non magna. Donec ut libero sed dolor dapibus tincidunt et nec quam. Duis non ultricies lorem. Quisque eu odio.",
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet ultrices orci at viverra. Donec ut orci eu neque lobortis feugiat eu eu nunc. Nulla sagittis orci ac suscipit fermentum. Nulla congue elit turpis, vitae lobortis ex tincidunt vitae. Vivamus sollicitudin facilisis ex efficitur varius. Fusce diam nisl, porta sit amet elit vitae, ornare malesuada erat. Nam porttitor magna in mollis convallis. Quisque consequat nisl quam, nec posuere enim vehicula sed. Suspendisse potenti. Quisque non ex molestie, luctus massa quis, suscipit nisl. Vivamus sed enim mattis, tristique lorem sit amet.",
-                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo lobortis ex, sit amet rutrum sem lacinia a. Vestibulum bibendum vel nulla sed ornare. Duis odio augue, ullamcorper nec venenatis vel, euismod sit amet neque. Aliquam porta viverra ipsum. Nam tempus malesuada ex in elementum. Sed et nulla tincidunt magna pellentesque suscipit a et ante. Aenean a auctor dui. In posuere semper urna at efficitur. Maecenas accumsan dictum velit et ultrices. Sed ullamcorper nunc ipsum, sed pharetra ex posuere ac. Duis vitae dapibus dolor, ut aliquet orci. Vestibulum at ipsum iaculis, dictum tellus ut, posuere lectus. Suspendisse blandit faucibus semper.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis.",
+                       @"Quello che per il mercato è un punto d’arrivo, per noi di Banca Leonardo è solo il punto di partenza. Da sempre gli operatori danno valore soprattutto alla performance finanziaria, trascurando bisogni fondamentali per i propri clienti: sicurezza, serenità e realizzazione personale. Oggi il cliente ricerca più della semplice performance; perciò è necessaria un’attitudine particolare all’osservazione e all’analisi, una cultura della profondità e della conoscenza. Occorre una capacità di lettura e diagnosi delle esigenze di ogni singolo individuo, saper andare oltre soluzioni standardizzate, identificando strategie d’investimento su misura, avendo come fine ultimo la soddisfazione del cliente costruita intorno a una relazione basata su trasparenza e fiducia. Da sempre, in Banca Leonardo non ci accontentiamo di guardare la superficie delle cose, ma cerchiamo la sostanza, radiografando ogni singolo dettaglio, non lasciando nulla al caso. Questo è ciò che ci contraddistingue. Questo è il nostro talento.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquam interdum augue et ultrices. Praesent molestie augue non enim fringilla.",
+                       @"INDIPENDENZA : Il benessere, non solo finanziario, del cliente è l’obiettivo ultimo di ogni nostro intervento. Agiamo con indipendenza e senza alcun conflitto di interesse, offrendo ai nostri clienti la più ampia gamma di servizi e prodotti finanziari. PROFESSIONALITÀ E COMPETENZA: Comprendere, analizzare e soddisfare le aspettative e i bisogni di ciascun cliente, conoscere a fondo il mercato di riferimento e saperne leggere i cambiamenti, dal più piccolo dettaglio alla visione d’insieme: è ciò che ci impegniamo a fare ogni giorno. ITALIANITÀ: Innovazione, qualità, versatilità: in Banca Leonardo, con l’attenzione ai dettagli che ci contraddistingue e l’originalità delle soluzioni che proponiamo, incarniamo al meglio lo spirito e lo stile italiano. Nasciamo in Italia, ma operiamo in tutta Europa, avvalendoci anche di competenze territoriali e settoriali specifiche.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eleifend ullamcorper egestas. Morbi nec ipsum cursus, elementum nunc vitae, molestie quam. Mauris sed leo felis. Praesent dignissim, lacus at mattis.",
+                       @"Banca Leonardo offre, direttamente o tramite controllate, servizi di Wealth Management e Financial Advisory in Italia e in numerosi Paesi europei.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin ex id mollis commodo. In sit amet ullamcorper purus, sit amet bibendum justo. Sed sodales ante et ipsum viverra, sed tristique eros condimentum. Nulla a risus sed ante molestie vehicula.",
+                       @"Protezione del patrimonio del cliente, mantenimento del suo potere d’acquisto, conservazione e miglioramento nel tempo del suo stile di vita: per adempiere a questi impegni e soddisfare le esigenze dei propri clienti, Banca Leonardo offre un articolato sistema di servizi e strumenti di Wealth Management. Analizziamo le aspettative dell’investitore, i suoi bisogni, le sue problematiche; proponiamo la composizione di portafoglio e la soluzione di investimento più idonea; supportiamo il cliente nella scelta del migliore interlocutore o del servizio a lui più adeguato. Il benessere finanziario è un valore da tutelare in modo globale. Sono a disposizione inoltre servizi di family office e di pianificazione fiscale e finanziaria, servizi bancari e di tesoreria avanzata, offrendo soluzioni a problematiche di finanza straordinaria, e servizi personalizzati di private insurance, art e real estate advisory. In Banca Leonardo il cliente può dunque trovare la risposta a tutte le sue esigenze personali, familiari e professionali.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget aliquet magna. Ut nec nulla bibendum orci mollis commodo ut non nibh. Donec fringilla ex augue, ac suscipit odio sagittis vitae. Cras ornare rutrum orci non ultrices. Sed mattis lectus a purus posuere elementum. Cras mauris lectus, malesuada quis ultrices.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus vitae diam mollis pulvinar. Duis aliquet lectus in sem vulputate, ut cursus diam condimentum. Nunc quis gravida tellus, venenatis aliquam nulla. Sed sit amet porttitor ante. Quisque vel eros lacinia, maximus arcu eu, placerat tortor. Nam iaculis, nisl sed scelerisque finibus, sapien lectus eleifend lorem, eget iaculis diam sapien et.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac auctor erat. Proin ut dui erat. Nam id felis eu sem ultricies gravida commodo non arcu. Ut eget risus in lorem dignissim dapibus vitae ut risus. Ut id tincidunt nulla. Vivamus sodales ligula eget nisl condimentum aliquam. Nulla ultricies leo ligula, vel pharetra dui facilisis at. Sed euismod felis fringilla arcu elementum dictum. Phasellus a finibus nulla. Fusce tincidunt vel.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia erat vel aliquam finibus. Phasellus massa augue, placerat et urna et, condimentum laoreet neque. Nam dapibus arcu suscipit, viverra dui cursus, porttitor ipsum. Curabitur mattis aliquet lacus, id facilisis lacus elementum sed. Quisque suscipit ultrices sapien sit amet accumsan. Vestibulum dictum laoreet lacinia. Fusce nulla odio, dignissim ut fermentum eu, facilisis non magna. Donec ut libero sed dolor dapibus tincidunt et nec quam. Duis non ultricies lorem. Quisque eu odio.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet ultrices orci at viverra. Donec ut orci eu neque lobortis feugiat eu eu nunc. Nulla sagittis orci ac suscipit fermentum. Nulla congue elit turpis, vitae lobortis ex tincidunt vitae. Vivamus sollicitudin facilisis ex efficitur varius. Fusce diam nisl, porta sit amet elit vitae, ornare malesuada erat. Nam porttitor magna in mollis convallis. Quisque consequat nisl quam, nec posuere enim vehicula sed. Suspendisse potenti. Quisque non ex molestie, luctus massa quis, suscipit nisl. Vivamus sed enim mattis, tristique lorem sit amet.",
+//                       @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo lobortis ex, sit amet rutrum sem lacinia a. Vestibulum bibendum vel nulla sed ornare. Duis odio augue, ullamcorper nec venenatis vel, euismod sit amet neque. Aliquam porta viverra ipsum. Nam tempus malesuada ex in elementum. Sed et nulla tincidunt magna pellentesque suscipit a et ante. Aenean a auctor dui. In posuere semper urna at efficitur. Maecenas accumsan dictum velit et ultrices. Sed ullamcorper nunc ipsum, sed pharetra ex posuere ac. Duis vitae dapibus dolor, ut aliquet orci. Vestibulum at ipsum iaculis, dictum tellus ut, posuere lectus. Suspendisse blandit faucibus semper.",
                        nil];
 }
 
@@ -390,23 +416,23 @@ float headerMinimumHeight = 50.0;
     self.cellsContent = [[NSMutableArray alloc] init];
     
     // First cell
-    NSDictionary *dict1 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 1", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Binoculars.png", @"image_name", nil];
+    NSDictionary *dict1 = [NSDictionary dictionaryWithObjectsAndKeys:@""@"", @"title", [self.loreLipsum objectAtIndex:0], @"description", @"", @"image_name", nil];
     [self.cellsContent addObject:dict1];
-    // First cell
-    NSDictionary *dict2 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 2", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Camera.png", @"image_name", nil];
+    // Second cell
+    NSDictionary *dict2 = [NSDictionary dictionaryWithObjectsAndKeys:@"I NOSTRI VALORI", @"title", [self.loreLipsum objectAtIndex:1], @"description", @"Camera.png", @"image_name", nil];
     [self.cellsContent addObject:dict2];
-    // First cell
-    NSDictionary *dict3 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 3", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Desk Tidy.png", @"image_name", nil];
+    // Third cell
+    NSDictionary *dict3 = [NSDictionary dictionaryWithObjectsAndKeys:@"IL GRUPPO", @"title", [self.loreLipsum objectAtIndex:2], @"description", @"Desk Tidy.png", @"image_name", nil];
     [self.cellsContent addObject:dict3];
-    // First cell
-    NSDictionary *dict4 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 4", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Headphones.png", @"image_name", nil];
+    // Forth cell
+    NSDictionary *dict4 = [NSDictionary dictionaryWithObjectsAndKeys:@"WEALTH MANAGEMENT", @"title", [self.loreLipsum objectAtIndex:3], @"description", @"Headphones.png", @"image_name", nil];
     [self.cellsContent addObject:dict4];
-    // First cell
-    NSDictionary *dict5 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 5", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Flightcase.png", @"image_name", nil];
-    [self.cellsContent addObject:dict5];
-    // First cell
-    NSDictionary *dict6 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 6", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Microscope.png", @"image_name", nil];
-    [self.cellsContent addObject:dict6];
+//    // Fith cell
+//    NSDictionary *dict5 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 5", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Flightcase.png", @"image_name", nil];
+//    [self.cellsContent addObject:dict5];
+//    // Sixth cell
+//    NSDictionary *dict6 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 6", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Microscope.png", @"image_name", nil];
+//    [self.cellsContent addObject:dict6];
 }
 
 
@@ -443,12 +469,14 @@ float headerMinimumHeight = 50.0;
     for (int i = 0; i < self.tableView.indexPathsForVisibleRows.count; i++) {
         // La cella desiderata è una di quelle presenti su schermo e grazie alla objectAtIndex riusciamo a recuperarla (gli altri metodi provati sono stati inefficaci)
         BLPresentationTableViewCell *cell = (BLPresentationTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.tableView.indexPathsForVisibleRows objectAtIndex:i]];
-        // Calcolo della distance percentuale che il contenuto della scroll della cella dovrebbe avere rispetto al suo contenuto
-        float distancePercentage = [self calculateDistancePercentageOfCell:cell];
-        // Calcolo dell'offset vero e proprio basato sulla percentuale precedentemente calcolata
-        float offsetForScroll = [self calculateOffsetForScrollView:cell.presentationScroller withPercentage:distancePercentage];
-        // Applicazione dell'offset sul contenuto della scroll presente dentro la cella
-        [cell.presentationScroller setContentOffset:CGPointMake(0, offsetForScroll)];
+        if ([cell isKindOfClass: [BLPresentationTableViewCell class]]) {
+            // Calcolo della distance percentuale che il contenuto della scroll della cella dovrebbe avere rispetto al suo contenuto
+            float distancePercentage = [self calculateDistancePercentageOfCell:cell];
+            // Calcolo dell'offset vero e proprio basato sulla percentuale precedentemente calcolata
+            float offsetForScroll = [self calculateOffsetForScrollView:cell.presentationScroller withPercentage:distancePercentage];
+            // Applicazione dell'offset sul contenuto della scroll presente dentro la cella
+            [cell.presentationScroller setContentOffset:CGPointMake(0, offsetForScroll)];
+        }
     }
 }
 
