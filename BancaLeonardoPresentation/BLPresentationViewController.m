@@ -11,6 +11,7 @@
 #import "BLPresentationViewController.h"
 #import "BLPresentationTableViewCell.h"
 #import "BLPresentationOnlyTextTableViewCell.h"
+#import "BLPresentationTitleDescriptionTableViewCell.h"
 #import "NGAParallaxMotion.h"
 
 
@@ -34,6 +35,8 @@ float onlyDescriptionHeight = 0;
 int loreLipsumIndex = 0;
 float headerMaxHeight = 150.0;
 float headerMinimumHeight = 50.0;
+float offsetAdded = -20.0;
+float scrollDimensionsWealthCell = 400.0;
 
 
 
@@ -330,9 +333,18 @@ float headerMinimumHeight = 50.0;
         onlyDescriptionHeight = [self heightToAddCaluclation:cellBL.descriptionLabel];
     }
     else{
-        BLPresentationTableViewCell *cellBL = (BLPresentationTableViewCell *)cell;
-        // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
-        descriptionHeight = [self heightToAddCaluclation:cellBL.descriptionLabel];
+        if (indexPath.row == 3) {
+            BLPresentationOnlyTextTableViewCell *cellBL = (BLPresentationOnlyTextTableViewCell *)cell;
+            // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+            onlyDescriptionHeight = [self heightToAddCaluclation:cellBL.descriptionLabel];
+            onlyDescriptionHeight += 29.0;
+        }
+        else{
+            BLPresentationTableViewCell *cellBL = (BLPresentationTableViewCell *)cell;
+            // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+            descriptionHeight = [self heightToAddCaluclation:cellBL.descriptionLabel];
+        }
+        
     }
 }
 
@@ -370,22 +382,39 @@ float headerMinimumHeight = 50.0;
         return cell;
     }
     else{
-        BLPresentationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
-        // Impostazione dell'immagine
-        UIImage *imageToShow = [UIImage imageNamed:[dict valueForKey:@"image_name"]];
-        cell.presentationImageView.image = imageToShow;
-        // Impostazione del titolo
-        NSString *title = [dict valueForKey:@"title"];
-        cell.titleLabel.text = title;
-        // Impostazione della descrizione
-        NSString *description = [dict valueForKey:@"description"];
-        cell.descriptionLabel.text = description;
-        // Impostiamo lo sfondo della cella trasparente
-        cell.backgroundColor = [UIColor clearColor];
-        // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
-        descriptionHeight = [self heightToAddCaluclation:cell.descriptionLabel];
-        
-        return cell;
+        if (indexPath.row == 3) {
+            BLPresentationTitleDescriptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"textAndTitleCellIdentifier" forIndexPath:indexPath];
+            // Impostazione del titolo
+            NSString *title = [dict valueForKey:@"title"];
+            cell.titleLabel.text = title;
+            // Impostazione della descrizione
+            NSString *description = [dict valueForKey:@"description"];
+            cell.descriptionLabel.text = description;
+            // Impostiamo lo sfondo della cella trasparente
+            cell.backgroundColor = [UIColor clearColor];
+            // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+            descriptionHeight = [self heightToAddCaluclation:cell.descriptionLabel];
+            
+            return cell;
+        }
+        else{
+            BLPresentationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
+            // Impostazione dell'immagine
+            UIImage *imageToShow = [UIImage imageNamed:[dict valueForKey:@"image_name"]];
+            cell.presentationImageView.image = imageToShow;
+            // Impostazione del titolo
+            NSString *title = [dict valueForKey:@"title"];
+            cell.titleLabel.text = title;
+            // Impostazione della descrizione
+            NSString *description = [dict valueForKey:@"description"];
+            cell.descriptionLabel.text = description;
+            // Impostiamo lo sfondo della cella trasparente
+            cell.backgroundColor = [UIColor clearColor];
+            // Calcolo l'altezza della label della descrizione in modo tale da avere una misura dinamica dell'altezza complessiva della cella
+            descriptionHeight = [self heightToAddCaluclation:cell.descriptionLabel];
+            
+            return cell;
+        }
     }
 }
 
@@ -419,20 +448,14 @@ float headerMinimumHeight = 50.0;
     NSDictionary *dict1 = [NSDictionary dictionaryWithObjectsAndKeys:@""@"", @"title", [self.loreLipsum objectAtIndex:0], @"description", @"", @"image_name", nil];
     [self.cellsContent addObject:dict1];
     // Second cell
-    NSDictionary *dict2 = [NSDictionary dictionaryWithObjectsAndKeys:@"I NOSTRI VALORI", @"title", [self.loreLipsum objectAtIndex:1], @"description", @"Camera.png", @"image_name", nil];
+    NSDictionary *dict2 = [NSDictionary dictionaryWithObjectsAndKeys:@"I NOSTRI VALORI", @"title", [self.loreLipsum objectAtIndex:1], @"description", @"Logo_payoff.jpg", @"image_name", nil];
     [self.cellsContent addObject:dict2];
     // Third cell
-    NSDictionary *dict3 = [NSDictionary dictionaryWithObjectsAndKeys:@"IL GRUPPO", @"title", [self.loreLipsum objectAtIndex:2], @"description", @"Desk Tidy.png", @"image_name", nil];
+    NSDictionary *dict3 = [NSDictionary dictionaryWithObjectsAndKeys:@"IL GRUPPO", @"title", [self.loreLipsum objectAtIndex:2], @"description", @"Leonardo_Da_Vinci.png", @"image_name", nil];
     [self.cellsContent addObject:dict3];
     // Forth cell
-    NSDictionary *dict4 = [NSDictionary dictionaryWithObjectsAndKeys:@"WEALTH MANAGEMENT", @"title", [self.loreLipsum objectAtIndex:3], @"description", @"Headphones.png", @"image_name", nil];
+    NSDictionary *dict4 = [NSDictionary dictionaryWithObjectsAndKeys:@"WEALTH MANAGEMENT", @"title", [self.loreLipsum objectAtIndex:3], @"description", @"", @"image_name", nil];
     [self.cellsContent addObject:dict4];
-//    // Fith cell
-//    NSDictionary *dict5 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 5", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Flightcase.png", @"image_name", nil];
-//    [self.cellsContent addObject:dict5];
-//    // Sixth cell
-//    NSDictionary *dict6 = [NSDictionary dictionaryWithObjectsAndKeys:@"Title 6", @"title", [self.loreLipsum objectAtIndex:loreLipsumIndex], @"description", @"Microscope.png", @"image_name", nil];
-//    [self.cellsContent addObject:dict6];
 }
 
 
@@ -474,6 +497,8 @@ float headerMinimumHeight = 50.0;
             float distancePercentage = [self calculateDistancePercentageOfCell:cell];
             // Calcolo dell'offset vero e proprio basato sulla percentuale precedentemente calcolata
             float offsetForScroll = [self calculateOffsetForScrollView:cell.presentationScroller withPercentage:distancePercentage];
+            // Aggiunta di un offset in più per far quadrare il tutto
+            offsetForScroll += offsetAdded;
             // Applicazione dell'offset sul contenuto della scroll presente dentro la cella
             [cell.presentationScroller setContentOffset:CGPointMake(0, offsetForScroll)];
         }

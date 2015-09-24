@@ -10,6 +10,8 @@
             <string>MuseoSansCyrl-300</string>
             <string>MuseoSansCyrl-300</string>
             <string>MuseoSansCyrl-300</string>
+            <string>MuseoSansCyrl-300</string>
+            <string>MuseoSansCyrl-300</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -36,9 +38,9 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Banca Leonardo_bianco.png" translatesAutoresizingMaskIntoConstraints="NO" id="qAP-ls-hD4">
-                                        <rect key="frame" x="118" y="12" width="365" height="130"/>
+                                        <rect key="frame" x="162" y="12" width="277" height="130"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="qAP-ls-hD4" secondAttribute="height" multiplier="1:1" constant="235" id="FEO-xg-F1e"/>
+                                            <constraint firstAttribute="width" secondItem="qAP-ls-hD4" secondAttribute="height" multiplier="1:1" constant="147" id="FEO-xg-F1e"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -54,13 +56,50 @@
                                 <rect key="frame" x="0.0" y="600" width="600" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="textAndTitleCellIdentifier" id="1D3-wQ-WIl" customClass="BLPresentationTitleDescriptionTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1D3-wQ-WIl" id="lQE-JD-NX1">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTB-Jw-0Er" userLabel="title_Label">
+                                                    <rect key="frame" x="16" y="8" width="568" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="lnh-Ve-Fnv"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="MuseoSansCyrl-300" family="Museo Sans Cyrl" pointSize="21"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsx-Sg-6oy" userLabel="description_Label">
+                                                    <rect key="frame" x="279" y="40" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="MuseoSansCyrl-300" family="Museo Sans Cyrl" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jsx-Sg-6oy" secondAttribute="bottom" constant="8" id="52K-Rb-SnU"/>
+                                                <constraint firstItem="lTB-Jw-0Er" firstAttribute="leading" secondItem="lQE-JD-NX1" secondAttribute="leadingMargin" id="5ue-i5-RiT"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lTB-Jw-0Er" secondAttribute="trailing" id="F85-Bw-JdS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jsx-Sg-6oy" secondAttribute="trailing" id="ev9-cQ-JKL"/>
+                                                <constraint firstItem="lTB-Jw-0Er" firstAttribute="top" secondItem="lQE-JD-NX1" secondAttribute="topMargin" constant="8" id="ucn-rb-Ufh"/>
+                                                <constraint firstItem="jsx-Sg-6oy" firstAttribute="leading" secondItem="lQE-JD-NX1" secondAttribute="leadingMargin" id="xLB-WX-QIi"/>
+                                                <constraint firstItem="jsx-Sg-6oy" firstAttribute="top" secondItem="lTB-Jw-0Er" secondAttribute="bottom" constant="8" id="y06-TH-V8w"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="jsx-Sg-6oy" id="Czj-dI-88I"/>
+                                            <outlet property="titleLabel" destination="lTB-Jw-0Er" id="DZB-wA-XZU"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="onlyTextCellIdentifier" rowHeight="44" id="vSY-wG-06M" customClass="BLPresentationOnlyTextTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vSY-wG-06M" id="ZuH-9i-hty">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQT-eH-01M" userLabel="description_Label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQT-eH-01M" userLabel="description_Label">
                                                     <rect key="frame" x="279" y="12" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" name="MuseoSansCyrl-300" family="Museo Sans Cyrl" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,6 +185,7 @@
                                             <outlet property="descriptionLabel" destination="1H9-5a-fCj" id="ty3-YC-9Ai"/>
                                             <outlet property="presentationImageView" destination="xAW-wu-5TM" id="FZL-xS-WUy"/>
                                             <outlet property="presentationScroller" destination="MJb-uF-sob" id="Ix0-cM-1x4"/>
+                                            <outlet property="presentationScrollerHeightConstraint" destination="i2z-hf-igX" id="bG5-M4-kcm"/>
                                             <outlet property="titleLabel" destination="GDl-Cx-t5R" id="UyP-OV-XjJ"/>
                                         </connections>
                                     </tableViewCell>

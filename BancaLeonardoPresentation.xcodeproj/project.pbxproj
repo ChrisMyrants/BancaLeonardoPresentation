@@ -19,6 +19,10 @@
 		D8196DF91BAB0EFB001FE6DB /* Stopwatch.png in Resources */ = {isa = PBXBuildFile; fileRef = D8196DEF1BAB0EFB001FE6DB /* Stopwatch.png */; };
 		D8196DFA1BAB0EFB001FE6DB /* Violin.png in Resources */ = {isa = PBXBuildFile; fileRef = D8196DF01BAB0EFB001FE6DB /* Violin.png */; };
 		D84A2A0D1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D84A2A0C1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m */; };
+		D84A2A0F1BB3DE1200AC0E1E /* Logo_payoff.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D84A2A0E1BB3DE1200AC0E1E /* Logo_payoff.jpg */; };
+		D84A2A131BB3E8A600AC0E1E /* Leonardo_Da_Vinci.png in Resources */ = {isa = PBXBuildFile; fileRef = D84A2A121BB3E8A600AC0E1E /* Leonardo_Da_Vinci.png */; };
+		D84A2A151BB3F28E00AC0E1E /* Struttura_societaria.png in Resources */ = {isa = PBXBuildFile; fileRef = D84A2A141BB3F28E00AC0E1E /* Struttura_societaria.png */; };
+		D84A2A181BB4197B00AC0E1E /* BLPresentationTitleDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D84A2A171BB4197B00AC0E1E /* BLPresentationTitleDescriptionTableViewCell.m */; };
 		D876B8D31BB004A500BF19E9 /* MuseoSansCyrl_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */; };
 		D876B8D41BB004A500BF19E9 /* MuseoSansCyrl_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */; };
 		D876B8D51BB004A500BF19E9 /* MuseoSansCyrl-700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D876B8D21BB004A500BF19E9 /* MuseoSansCyrl-700.ttf */; };
@@ -65,6 +69,11 @@
 		D8196DF01BAB0EFB001FE6DB /* Violin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Violin.png; sourceTree = "<group>"; };
 		D84A2A0B1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPresentationOnlyTextTableViewCell.h; sourceTree = "<group>"; };
 		D84A2A0C1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLPresentationOnlyTextTableViewCell.m; sourceTree = "<group>"; };
+		D84A2A0E1BB3DE1200AC0E1E /* Logo_payoff.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Logo_payoff.jpg; sourceTree = "<group>"; };
+		D84A2A121BB3E8A600AC0E1E /* Leonardo_Da_Vinci.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leonardo_Da_Vinci.png; sourceTree = "<group>"; };
+		D84A2A141BB3F28E00AC0E1E /* Struttura_societaria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Struttura_societaria.png; sourceTree = "<group>"; };
+		D84A2A161BB4197B00AC0E1E /* BLPresentationTitleDescriptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPresentationTitleDescriptionTableViewCell.h; sourceTree = "<group>"; };
+		D84A2A171BB4197B00AC0E1E /* BLPresentationTitleDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLPresentationTitleDescriptionTableViewCell.m; sourceTree = "<group>"; };
 		D876B8D11BB004A500BF19E9 /* MuseoSansCyrl_0.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSansCyrl_0.otf; sourceTree = "<group>"; };
 		D876B8D21BB004A500BF19E9 /* MuseoSansCyrl-700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuseoSansCyrl-700.ttf"; sourceTree = "<group>"; };
 		D876B8D71BB02C8C00BF19E9 /* Logo_bianco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_bianco.png; sourceTree = "<group>"; };
@@ -202,6 +211,9 @@
 		D8B8D8FC1BAAB84E008BD0B5 /* Cell Images */ = {
 			isa = PBXGroup;
 			children = (
+				D84A2A0E1BB3DE1200AC0E1E /* Logo_payoff.jpg */,
+				D84A2A141BB3F28E00AC0E1E /* Struttura_societaria.png */,
+				D84A2A121BB3E8A600AC0E1E /* Leonardo_Da_Vinci.png */,
 				D8196DE71BAB0EFB001FE6DB /* Bicycle.png */,
 				D8196DE81BAB0EFB001FE6DB /* Binoculars.png */,
 				D8196DE91BAB0EFB001FE6DB /* Camera.png */,
@@ -235,6 +247,8 @@
 				D8196DE51BAAF81B001FE6DB /* BLPresentationTableViewCell.m */,
 				D84A2A0B1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.h */,
 				D84A2A0C1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m */,
+				D84A2A161BB4197B00AC0E1E /* BLPresentationTitleDescriptionTableViewCell.h */,
+				D84A2A171BB4197B00AC0E1E /* BLPresentationTitleDescriptionTableViewCell.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -323,11 +337,13 @@
 				D8196DF81BAB0EFB001FE6DB /* Microscope.png in Resources */,
 				D876B8D31BB004A500BF19E9 /* MuseoSansCyrl_0.otf in Resources */,
 				D8B8D8E01BAAB3D2008BD0B5 /* Main.storyboard in Resources */,
+				D84A2A131BB3E8A600AC0E1E /* Leonardo_Da_Vinci.png in Resources */,
 				D8196DF21BAB0EFB001FE6DB /* Binoculars.png in Resources */,
 				D8196DF61BAB0EFB001FE6DB /* Headphones.png in Resources */,
 				D8196DF11BAB0EFB001FE6DB /* Bicycle.png in Resources */,
 				D8196DF91BAB0EFB001FE6DB /* Stopwatch.png in Resources */,
 				D8196DFA1BAB0EFB001FE6DB /* Violin.png in Resources */,
+				D84A2A151BB3F28E00AC0E1E /* Struttura_societaria.png in Resources */,
 				D8B8D8E51BAAB3D2008BD0B5 /* LaunchScreen.xib in Resources */,
 				D8B8D8E21BAAB3D2008BD0B5 /* Images.xcassets in Resources */,
 				D8196DF51BAB0EFB001FE6DB /* Flightcase.png in Resources */,
@@ -338,6 +354,7 @@
 				D8B8D9131BAABA8B008BD0B5 /* BL_Logo Gradient.png in Resources */,
 				D8196DF41BAB0EFB001FE6DB /* Desk Tidy.png in Resources */,
 				D876B8D51BB004A500BF19E9 /* MuseoSansCyrl-700.ttf in Resources */,
+				D84A2A0F1BB3DE1200AC0E1E /* Logo_payoff.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +379,7 @@
 				D8B8D91E1BAABD97008BD0B5 /* NGAParallaxMotion.m in Sources */,
 				D8B8D8DD1BAAB3D2008BD0B5 /* ViewController.m in Sources */,
 				D8B8D8DA1BAAB3D2008BD0B5 /* AppDelegate.m in Sources */,
+				D84A2A181BB4197B00AC0E1E /* BLPresentationTitleDescriptionTableViewCell.m in Sources */,
 				D8196DE61BAAF81B001FE6DB /* BLPresentationTableViewCell.m in Sources */,
 				D8B8D9181BAABAD7008BD0B5 /* BLPresentationViewController.m in Sources */,
 				D84A2A0D1BB3D29F00AC0E1E /* BLPresentationOnlyTextTableViewCell.m in Sources */,

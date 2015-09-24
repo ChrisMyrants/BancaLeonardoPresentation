@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *presentationScroller;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *presentationScrollerHeightConstraint;
 
 @end
