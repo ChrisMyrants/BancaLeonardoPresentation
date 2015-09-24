@@ -479,6 +479,9 @@ float scrollDimensionsWealthCell = 400.0;
         if (scrollView.contentOffset.y <= headerMaxHeight - headerMinimumHeight) {
             self.headerHeightConstraint.constant = headerMaxHeight - scrollView.contentOffset.y;
         }
+        else{
+            self.headerHeightConstraint.constant = headerMinimumHeight;
+        }
     }
     else{
         self.headerHeightConstraint.constant = headerMaxHeight;
